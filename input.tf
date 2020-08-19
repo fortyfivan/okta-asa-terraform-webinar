@@ -27,12 +27,12 @@ provider "oktaasa" {
 
 variable "name" {
   type    = string
-  default = "showcase"
+  default = "okta-asa"
 }
 
 variable "environment" {
   type    = string
-  default = "showcase-demo"
+  default = "okta-asa-env"
 }
 
 variable "sftd_version" {
@@ -47,11 +47,10 @@ variable "instances" {
 
 variable "oktaasa_project" {
   description = "Name of the ASA Project"
-  default     = "showcase-project"
+  default     = "asa-project"
 }
 
 variable "oktaasa_groups" {
   type    = list(string)
-  default = ["PP_InfoSec", "PP_DevOps"]
 }
 
