@@ -6,18 +6,18 @@ echo "Add an enrollment token"
 sudo mkdir -p /var/lib/sftd
 echo "${enrollment_token}" | sudo tee /var/lib/sftd/enrollment.token
 
+export DEBIAN_FRONTEND=noninteractive
+
 echo "Add a basic sftd configuration"
 sudo mkdir -p /etc/sft/
 sftcfg=$(cat <<EOF
 ---
 # CanonicalName: Specifies the name clients should use/see when connecting to this host.
-CanonicalName:          "showcase-bastion"
+CanonicalName:          "asa-demo-bastion"
 EOF
 )
 
 echo -e "$sftcfg" | sudo tee /etc/sft/sftd.yaml
-
-export DEBIAN_FRONTEND=noninteractive
 
 echo "Retrieve information about new packages"
 sudo apt-get update

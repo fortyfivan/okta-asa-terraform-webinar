@@ -13,8 +13,8 @@ sudo mkdir -p /etc/sft/
 sftcfg=$(cat <<EOF
 ---
 # CanonicalName: Specifies the name clients should use/see when connecting to this host.
-CanonicalName:            "showcase-target-${instance}"
-Bastion:                  "showcase-bastion"
+CanonicalName:            "asa-demo-target-${instance}"
+Bastion:                  "asa-demo-bastion"
 EOF
 )
 
