@@ -12,13 +12,16 @@ variable "oktaasa_key" {
 
 variable "oktaasa_secret" {
 }
-
+/*
 provider "aws" {
   region     = "us-east-2"
   secret_key = var.secret_key
   access_key = var.access_key
 }
+*/
+provider "google" {
 
+}
 provider "oktaasa" {
   oktaasa_team   = var.oktaasa_team
   oktaasa_key    = var.oktaasa_key
@@ -41,7 +44,7 @@ variable "sftd_version" {
 }
 
 variable "instances" {
-  type = number
+  type    = number
   default = 3
 }
 
@@ -51,6 +54,6 @@ variable "oktaasa_project" {
 }
 
 variable "oktaasa_groups" {
-  type    = list(string)
+  type = list(string)
 }
 
