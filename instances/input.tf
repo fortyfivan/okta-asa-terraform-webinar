@@ -13,7 +13,7 @@ variable vpc_id {
 variable instances {
   type = number
 }
-
+/*
 variable public_subnet {
   type = string
 }
@@ -21,7 +21,7 @@ variable public_subnet {
 variable private_subnet {
   type = string
 }
-
+*/
 variable sftd_version {
   type = string
 }
