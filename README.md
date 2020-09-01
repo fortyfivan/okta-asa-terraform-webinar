@@ -1,4 +1,4 @@
-# Okta Advanced Server Access: Using the Terraform Provider on AWS
+# Okta Advanced Server Access: Using the Terraform Provider on GCP (WIP)
 
 The following is an example of using [Terraform](https://www.terraform.io/) to deploy AWS infrastructure with Okta Advanced Server Access managing identities on Linux EC2 instances through a local agent that is installed via a userdata script.
 
