@@ -25,7 +25,7 @@ resource "google_compute_instance" "bastion" {
     terraform   = true
   }
   network_interface {
-    network = "default"
+    network = var.network
 
     access_config {
       // Ephemeral IP

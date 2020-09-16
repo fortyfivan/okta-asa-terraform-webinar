@@ -4,7 +4,7 @@ The following is an example of using [Terraform](https://www.terraform.io/) to d
 
 [Advanced Server Access](https://www.okta.com/products/advanced-server-access/) is an Okta application that automates identity & access across distributed Linux and Windows server fleets, extending a seamless Single Sign-On experience to SSH and RDP workflows.
 
-This code example deploys a new VPC (default: us-east-2) with a public and private subnet. In the public subnet, a single Ubuntu 16.04 compute engine instance is deployed as a bastion host, and in the private subnet, N (default: 3) Ubuntu 16.04 compute engine instances are deployed. In parallel, a new Okta ASA Project is created, and select Groups are assigned. The compute engine instances spun up are enrolled with the newly created Okta ASA Project, and the target instances are configured to hop through the bastion instance.
+This code example deploys a new VPC (default: us-central1) with a public and private subnet. In the public subnet, a single Ubuntu 16.04 compute engine instance is deployed as a bastion host, and in the private subnet, N (default: 3) Ubuntu 16.04 compute engine instances are deployed. In parallel, a new Okta ASA Project is created, and select Groups are assigned. The compute engine instances spun up are enrolled with the newly created Okta ASA Project, and the target instances are configured to hop through the bastion instance.
 
 ## Prerequisites
 
