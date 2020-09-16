@@ -10,7 +10,6 @@ resource "google_compute_instance" "bastion" {
   name                    = "vm-bastion"
   machine_type            = "f1-micro"
   metadata_startup_script = templatefile("${path.module}/userdata-scripts/ubuntu-bastion-userdata-sftd.sh", { sftd_version = var.sftd_version, enrollment_token = var.enrollment_token })
-  zone                    = var.gcp_zone
 
   boot_disk {
     initialize_params {
@@ -40,7 +39,6 @@ resource "google_compute_instance" "target" {
   name                    = "vm-target"
   machine_type            = "f1-micro"
   metadata_startup_script = templatefile("${path.module}/userdata-scripts/ubuntu-userdata-sftd.sh", { sftd_version = var.sftd_version, enrollment_token = var.enrollment_token, instance = count.index })
-  zone                    = var.gcp_zone
 
   boot_disk {
     initialize_params {

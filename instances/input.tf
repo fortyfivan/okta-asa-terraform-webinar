@@ -21,8 +21,3 @@ variable sftd_version {
 variable enrollment_token {
   type = string
 }
-
-variable gcp_zone {
-  type    = string
-  default = "europe-north1-a"
-}
