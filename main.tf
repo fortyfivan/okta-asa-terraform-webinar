@@ -8,7 +8,7 @@ module "network" {
   source       = "terraform-google-modules/network/google"
   version      = "2.5.0"
   network_name = "showcase-demo-vpc"
-  project_id   = "var.gcp_project"
+  project_id   = var.gcp_project
   #cidr    = "10.0.0.0/16"
 
   #azs             = ["us-east-2a", "us-east-2b"]
