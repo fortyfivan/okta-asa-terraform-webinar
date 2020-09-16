@@ -13,19 +13,16 @@ variable vpc_id {
 variable instances {
   type = number
 }
-/*
-variable public_subnet {
-  type = string
-}
 
-variable private_subnet {
-  type = string
-}
-*/
 variable sftd_version {
   type = string
 }
 
 variable enrollment_token {
   type = string
+}
+
+variable gcp_zone {
+  type    = string
+  default = "europe-north1-a"
 }
