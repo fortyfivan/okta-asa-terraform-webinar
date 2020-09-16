@@ -6,7 +6,7 @@ variable environment {
   type = string
 }
 
-variable vpc_id {
+variable network {
   type = string
 }
 

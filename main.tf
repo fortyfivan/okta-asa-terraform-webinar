@@ -24,21 +24,11 @@ module "network" {
       subnet_flow_logs      = "true"
     },
   ]
-
-  #enable_nat_gateway = true
-  #enable_vpn_gateway = true
-  /*
-  metadata = {
-    Terraform   = "true"
-    Name        = var.name
-    Environment = var.environment
-  }
-  */
 }
 
 module "instances" {
   source           = "./instances"
-  vpc_id           = module.network.network_name
+  network          = module.network.network_name
   name             = var.name
   environment      = var.environment
   instances        = var.instances
