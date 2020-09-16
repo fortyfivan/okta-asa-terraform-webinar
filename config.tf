@@ -22,5 +22,6 @@ terraform {
 
 provider "google" {
   region  = "europe-north1"
+  zone    = "europe-north1-a"
   project = "var.gcp_project"
 }
