@@ -1,6 +1,7 @@
 // Ubuntu 16.04 AMI
 data "google_compute_image" "my_image" {
-  family = "ubuntu-1604-lts"
+  family  = "debian-9"
+  project = "debian-cloud"
 }
 /*
 data "aws_ami" "ubuntu1604" {
@@ -53,7 +54,7 @@ resource "google_compute_instance" "bastion" {
 
   boot_disk {
     initialize_params {
-      image = data.google_compute_image.my_image
+      image = data.google_compute_image.my_image.self_link
     }
   }
 
@@ -90,7 +91,7 @@ resource "google_compute_instance" "target" {
 
   boot_disk {
     initialize_params {
-      image = data.google_compute_image.my_image
+      image = data.google_compute_image.my_image.self_link
     }
   }
 

@@ -1,17 +1,10 @@
-variable "secret_key" {
-}
+variable "gcp_project" {}
 
-variable "access_key" {
-}
+variable "oktaasa_team" {}
 
-variable "oktaasa_team" {
-}
+variable "oktaasa_key" {}
 
-variable "oktaasa_key" {
-}
-
-variable "oktaasa_secret" {
-}
+variable "oktaasa_secret" {}
 
 provider "oktaasa" {
   oktaasa_team   = var.oktaasa_team
