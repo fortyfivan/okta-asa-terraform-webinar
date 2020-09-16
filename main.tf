@@ -9,11 +9,7 @@ module "network" {
   version      = "2.5.0"
   network_name = "showcase-demo-vpc"
   project_id   = var.gcp_project
-  #cidr    = "10.0.0.0/16"
 
-  #azs             = ["us-east-2a", "us-east-2b"]
-  #private_subnets = ["10.0.1.0/24", "10.0.2.0/24"]
-  #public_subnets  = ["10.0.101.0/24", "10.0.102.0/24"]
   subnets = [
     {
       subnet_name   = "subnet-01"
@@ -41,13 +37,11 @@ module "network" {
 }
 
 module "instances" {
-  source      = "./instances"
-  vpc_id      = module.network.network_name
-  name        = var.name
-  environment = var.environment
-  instances   = var.instances
-  #public_subnet    = module.vpc.public_subnets[0]
-  #private_subnet   = module.vpc.private_subnets[0]
+  source           = "./instances"
+  vpc_id           = module.network.network_name
+  name             = var.name
+  environment      = var.environment
+  instances        = var.instances
   sftd_version     = var.sftd_version
   enrollment_token = module.okta.enrollment_token
 }
