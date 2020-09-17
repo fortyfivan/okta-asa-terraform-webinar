@@ -26,13 +26,38 @@ module "network" {
   ]
 }
 
-module "instances" {
-  source           = "./instances"
-  network          = module.network.network_name
-  name             = var.name
-  environment      = var.environment
-  instances        = var.instances
-  sftd_version     = var.sftd_version
-  enrollment_token = module.okta.enrollment_token
-}
+# module "instances" {
+#   source           = "./instances"
+#   network          = module.network.network_name
+#   name             = var.name
+#   environment      = var.environment
+#   instances        = var.instances
+#   sftd_version     = var.sftd_version
+#   enrollment_token = module.okta.enrollment_token
+# }
 
+resource "google_compute_instance" "target" {
+  count        = var.instances
+  name         = var.name
+  machine_type = "f1-micro"
+  # metadata_startup_script = templatefile("${path.module}/userdata-scripts/ubuntu-userdata-sftd.sh", { sftd_version = var.sftd_version, enrollment_token = var.enrollment_token, instance = count.index })
+
+  boot_disk {
+    initialize_params {
+      image = data.google_compute_image.my_image.self_link
+    }
+  }
+
+  metadata = {
+    Name        = var.name,
+    Environment = var.environment,
+    terraform   = true
+  }
+  network_interface {
+    network = var.network
+
+    access_config {
+      // Ephemeral IP
+    }
+  }
+}
