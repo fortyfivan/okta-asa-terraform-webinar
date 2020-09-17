@@ -41,5 +41,5 @@ resource "google_compute_firewall" "ssh" {
     ports    = ["22"]
   }
 
-  source_tags = ["bastion"]
+  target_tags = ["bastion"]
 }
