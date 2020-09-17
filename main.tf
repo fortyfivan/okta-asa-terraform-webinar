@@ -5,25 +5,24 @@ module "okta" {
 }
 
 module "network" {
-  source       = "terraform-google-modules/network/google"
-  version      = "2.5.0"
+  source  = "terraform-google-modules/network/google"
+  version = "2.5.0"
+
   network_name = "showcase-demo-vpc"
   project_id   = var.gcp_project
 
   subnets = [
     {
-      subnet_name           = "subnet-01"
-      subnet_ip             = "10.0.1.0/24"
-      subnet_region         = var.gcp_region
-      subnet_private_access = "true"
-      subnet_flow_logs      = "true"
+      subnet_name   = "subnet-01"
+      subnet_ip     = "10.0.1.0/24"
+      subnet_region = var.gcp_region
     },
     {
-      subnet_name           = "subnet-02"
-      subnet_ip             = "10.0.2.0/24"
-      subnet_region         = var.gcp_region
-      subnet_private_access = "true"
-      subnet_flow_logs      = "true"
+      subnet_name   = "subnet-02"
+      subnet_ip     = "10.0.2.0/24"
+      subnet_region = var.gcp_region
+      # subnet_private_access = "true"
+      # subnet_flow_logs      = "true"
     },
   ]
 }
@@ -47,7 +46,7 @@ resource "google_compute_instance" "target" {
   count        = 1
   name         = var.name
   machine_type = "f1-micro"
-  # metadata_startup_script = templatefile("${path.module}/userdata-scripts/ubuntu-userdata-sftd.sh", { sftd_version = var.sftd_version, enrollment_token = var.enrollment_token, instance = count.index })
+  zone         = var.gcp_zone
 
   boot_disk {
     initialize_params {
