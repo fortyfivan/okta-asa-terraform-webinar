@@ -63,4 +63,6 @@ resource "google_compute_instance" "target" {
     network    = module.network.network_name
     subnetwork = "subnet-01"
   }
+
+  depends_on = [module.network]
 }
