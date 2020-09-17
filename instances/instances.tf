@@ -53,5 +53,9 @@ resource "google_compute_instance" "target" {
   }
   network_interface {
     subnetwork = var.subnetwork
+
+    access_config {
+      // Ephemeral IP
+    }
   }
 }
