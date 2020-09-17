@@ -20,41 +20,14 @@ module "network" {
   ]
 }
 
-# module "instances" {
-#   source           = "./instances"
-#   network          = module.network.network_name
-#   name             = var.name
-#   environment      = var.environment
-#   instances        = var.instances
-#   sftd_version     = var.sftd_version
-#   enrollment_token = module.okta.enrollment_token
-# }
-
-data "google_compute_image" "my_image" {
-  family  = "debian-9"
-  project = "debian-cloud"
-}
-
-resource "google_compute_instance" "target" {
-  count        = 1
-  name         = var.name
-  machine_type = "f1-micro"
-  zone         = var.gcp_zone
-
-  boot_disk {
-    initialize_params {
-      image = data.google_compute_image.my_image.self_link
-    }
-  }
-
-  metadata = {
-    Name        = var.name,
-    Environment = var.environment,
-    terraform   = true
-  }
-  network_interface {
-    subnetwork = module.network.subnets_names[0]
-  }
+module "instances" {
+  source           = "./instances"
+  subnetwork       = module.network.subnets_names[0]
+  name             = var.name
+  environment      = var.environment
+  instances        = var.instances
+  sftd_version     = var.sftd_version
+  enrollment_token = module.okta.enrollment_token
 
   depends_on = [module.network]
 }
