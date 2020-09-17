@@ -43,6 +43,18 @@ resource "google_compute_firewall" "ssh" {
 
   target_tags = ["bastion"]
 }
+resource "google_compute_firewall" "internal_ssh" {
+  name    = "${module.network.network_name}-allow-internal-ssh"
+  network = module.network.network_name
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+
+  source_tags = ["bastion"]
+  target_tags = ["okta-asa"]
+}
 
 resource "google_compute_router" "router" {
   name    = "nat-router"

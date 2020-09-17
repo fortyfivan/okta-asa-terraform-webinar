@@ -46,6 +46,8 @@ resource "google_compute_instance" "target" {
     }
   }
 
+  tags = ["okta-asa"]
+
   metadata = {
     Name        = var.name,
     Environment = var.environment,
