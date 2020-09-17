@@ -6,7 +6,7 @@ variable environment {
   type = string
 }
 
-variable network {
+variable subnetwork {
   type = string
 }
 

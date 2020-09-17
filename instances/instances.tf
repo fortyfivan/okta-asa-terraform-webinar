@@ -25,7 +25,7 @@ resource "google_compute_instance" "bastion" {
     terraform   = true
   }
   network_interface {
-    network = var.network
+    subnetwork = var.subnetwork
 
     access_config {
       // Ephemeral IP
@@ -52,10 +52,6 @@ resource "google_compute_instance" "target" {
     terraform   = true
   }
   network_interface {
-    network = var.network
-
-    access_config {
-      // Ephemeral IP
-    }
+    subnetwork = var.subnetwork
   }
 }
