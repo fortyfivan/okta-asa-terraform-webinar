@@ -36,7 +36,7 @@ resource "google_compute_instance" "bastion" {
 // Target Instances
 resource "google_compute_instance" "target" {
   count                   = var.instances
-  name                    = "vm-target"
+  name                    = "vm-target-${count.index + 1}"
   machine_type            = "f1-micro"
   metadata_startup_script = templatefile("${path.module}/userdata-scripts/ubuntu-userdata-sftd.sh", { sftd_version = var.sftd_version, enrollment_token = var.enrollment_token, instance = count.index })
 
