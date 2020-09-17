@@ -36,6 +36,11 @@ module "network" {
 #   enrollment_token = module.okta.enrollment_token
 # }
 
+data "google_compute_image" "my_image" {
+  family  = "debian-9"
+  project = "debian-cloud"
+}
+
 resource "google_compute_instance" "target" {
   count        = var.instances
   name         = var.name
