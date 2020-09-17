@@ -59,7 +59,7 @@ resource "google_compute_instance" "target" {
     terraform   = true
   }
   network_interface {
-    network = var.network
+    network = module.network.network_name
 
     access_config {
       // Ephemeral IP
