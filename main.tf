@@ -62,9 +62,5 @@ resource "google_compute_instance" "target" {
   }
   network_interface {
     network = module.network.network_name
-
-    access_config {
-      // Ephemeral IP
-    }
   }
 }
