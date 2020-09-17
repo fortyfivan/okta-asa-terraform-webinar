@@ -31,3 +31,15 @@ module "instances" {
 
   depends_on = [module.network]
 }
+
+resource "google_compute_firewall" "ssh" {
+  name    = "${module.network.network_name}-allow-ssh"
+  network = module.network.network_name
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+
+  source_tags = ["bastion"]
+}
