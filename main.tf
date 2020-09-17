@@ -29,7 +29,7 @@ module "instances" {
   sftd_version     = var.sftd_version
   enrollment_token = module.okta.enrollment_token
 
-  depends_on = [module.network]
+  depends_on = [module.network, google_compute_router_nat.nat]
 }
 
 resource "google_compute_firewall" "ssh" {
