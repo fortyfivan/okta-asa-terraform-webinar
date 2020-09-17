@@ -7,7 +7,7 @@ data "google_compute_image" "my_image" {
 // Bastion Host
 resource "google_compute_instance" "bastion" {
   count                   = 1
-  name                    = "vm-bastion"
+  name                    = "vm-bastion-${count.index + 1}"
   machine_type            = "f1-micro"
   metadata_startup_script = templatefile("${path.module}/userdata-scripts/ubuntu-bastion-userdata-sftd.sh", { sftd_version = var.sftd_version, enrollment_token = var.enrollment_token })
 
