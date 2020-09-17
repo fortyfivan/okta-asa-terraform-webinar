@@ -5,7 +5,7 @@ variable "gcp_region" {
 }
 
 variable "gcp_zone" {
-  default = "us-central1-a"
+  default = "europe-north1-a"
 }
 
 variable "oktaasa_team" {}
