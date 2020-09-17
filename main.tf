@@ -60,6 +60,6 @@ resource "google_compute_instance" "target" {
     terraform   = true
   }
   network_interface {
-    network = module.network.network_name
+    network = "terraform-vpc-network"
   }
 }
