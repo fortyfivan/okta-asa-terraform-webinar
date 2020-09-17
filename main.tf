@@ -12,9 +12,11 @@ module "network" {
 
   subnets = [
     {
-      subnet_name   = "subnet-01"
-      subnet_ip     = "10.0.1.0/24"
-      subnet_region = var.gcp_region
+      subnet_name           = "subnet-01"
+      subnet_ip             = "10.0.1.0/24"
+      subnet_region         = var.gcp_region
+      subnet_private_access = "true"
+      subnet_flow_logs      = "true"
     },
     {
       subnet_name           = "subnet-02"
